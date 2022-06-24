@@ -23,9 +23,6 @@ import com.example.mycharge.R
 import com.example.mycharge.network.ChargeNetwork
 import com.kongzue.dialogx.dialogs.FullScreenDialog
 import com.kongzue.dialogx.interfaces.OnBindView
-import com.kongzue.dialogx.util.views.ActivityScreenShotImageView
-import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 
 

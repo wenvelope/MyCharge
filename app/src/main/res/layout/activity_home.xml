@@ -11,18 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/background_image"
-            android:scaleType="fitXY"
-            android:src="@drawable/backgroundimage"
-            />
-        <net.center.blurview.ShapeBlurView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:blur_radius="15dp"
-            />
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/background_image"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:src="@drawable/backgroundimage"-->
+<!--            />-->
+<!--        <net.center.blurview.ShapeBlurView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:blur_radius="15dp"-->
+<!--            />-->
         <fragment
             android:id="@+id/navi_hostfragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:id="@+id/navi_bottom"
+        android:background="@color/dialogxColorBlue"
         app:menu="@menu/bootom_menu"/>
 
 </LinearLayout>

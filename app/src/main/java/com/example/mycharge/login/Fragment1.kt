@@ -3,6 +3,8 @@ package com.example.mycharge.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,14 +50,17 @@ class Fragment1 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mysp = fathercontext!!.getSharedPreferences("userToken", Context.MODE_PRIVATE)
-        val myToken = mysp.getString("TOKEN","weifangzhou")
-        if(!myToken.equals("weifangzhou")){
-            val intent = Intent(fathercontext, HomeActivity::class.java)
-            startActivity(intent)
-        }else{
-            findNavController().navigate(R.id.action_fragment1_to_loginFragment)
-        }
+        Handler(Looper.getMainLooper()).postDelayed(Runnable {
+            val mysp = fathercontext!!.getSharedPreferences("userToken", Context.MODE_PRIVATE)
+            val myToken = mysp.getString("TOKEN","weifangzhou")
+            if(!myToken.equals("weifangzhou")){
+                val intent = Intent(fathercontext, HomeActivity::class.java)
+                startActivity(intent)
+            }else{
+                findNavController().navigate(R.id.action_fragment1_to_loginFragment)
+            }
+        },1000)
+
 
     }
 
