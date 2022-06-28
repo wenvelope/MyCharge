@@ -34,8 +34,11 @@
             android:name="com.amap.api.v2.apikey"
             android:value="42a7214b392cde3c59f3cbdf72230cfa"/>
 
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".login.MainActivity">
+        <activity android:name=".HomeActivity">
+        </activity>
+        <activity
+            android:exported="true"
+            android:name=".login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

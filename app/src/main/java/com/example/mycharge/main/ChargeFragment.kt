@@ -34,6 +34,7 @@ class ChargeFragment : Fragment() {
     private var param2: String? = null
     private lateinit var mycontext :HomeActivity
     private lateinit var saoyisao :Button
+    private var myView:View ?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +47,17 @@ class ChargeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_charge, container, false)
+        if(myView==null){
+            myView=inflater.inflate(R.layout.fragment_charge, container, false)
+            return myView
+        }else{
+            return myView
+        }
+
 
 
     }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -66,7 +74,12 @@ class ChargeFragment : Fragment() {
         }
         Glide.with(MyApplication.context).load(R.drawable.ic_charging).into(charge_image)
         Glide.with(MyApplication.context).load(R.drawable.ic_connect).into(connect_image)
-        Glide.with(MyApplication.context).load(R.drawable.chargestop).into(car_charge)
+        if(charge_status.text.toString()=="未开启充电"){
+            Glide.with(MyApplication.context).load(R.drawable.chargestop).into(car_charge)
+        }else{
+            Glide.with(MyApplication.context).load(R.drawable.carcharge).into(car_charge)
+        }
+
         saoyisao.setOnClickListener {
 
             PermissionX.init(mycontext)
