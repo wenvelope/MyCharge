@@ -1,12 +1,10 @@
 package com.example.mycharge
 
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.navigation.NavController
@@ -19,7 +17,6 @@ import com.permissionx.guolindev.PermissionX
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_charge.*
 import qiu.niorgai.StatusBarCompat
-import java.util.jar.Manifest
 
 
 // sp name "userToken"

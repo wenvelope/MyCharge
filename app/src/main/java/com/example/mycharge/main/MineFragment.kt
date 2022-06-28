@@ -25,7 +25,6 @@ import com.kongzue.dialogx.dialogs.MessageDialog
 import com.kongzue.dialogx.interfaces.OnBindView
 import com.kongzue.dialogx.interfaces.OnDialogButtonClickListener
 import kotlinx.android.synthetic.main.fragment_mine.*
-import java.net.URL
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"

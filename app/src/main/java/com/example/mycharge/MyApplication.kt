@@ -1,7 +1,6 @@
 package com.example.mycharge
 
 import android.app.Application
-import android.app.Dialog
 import android.content.Context
 import com.kongzue.dialogx.DialogX
 import com.kongzue.dialogx.style.IOSStyle
