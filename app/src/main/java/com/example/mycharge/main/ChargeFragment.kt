@@ -1,20 +1,25 @@
 package com.example.mycharge.main
 
 
-import android.Manifest.permission_group.LOCATION
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.mycharge.HomeActivity
 import com.example.mycharge.MyApplication
 import com.example.mycharge.R
+import com.example.mycharge.network.ChargeNetwork
 import com.huawei.hms.hmsscankit.ScanUtil
 import com.huawei.hms.ml.scan.HmsScan
 import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
@@ -22,6 +27,11 @@ import com.kongzue.dialogx.dialogs.TipDialog
 import com.kongzue.dialogx.dialogs.WaitDialog
 import com.permissionx.guolindev.PermissionX
 import kotlinx.android.synthetic.main.fragment_charge.*
+import kotlinx.android.synthetic.main.fragment_charge.view.*
+import kotlinx.coroutines.launch
+import java.time.Duration
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 private const val ARG_PARAM1 = "param1"
@@ -35,6 +45,7 @@ class ChargeFragment : Fragment() {
     private lateinit var mycontext :HomeActivity
     private lateinit var saoyisao :Button
     private var myView:View ?=null
+    private lateinit var sp:SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,13 +73,40 @@ class ChargeFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mycontext = context as HomeActivity
+        sp = mycontext.getSharedPreferences("userToken",Context.MODE_PRIVATE)
     }
 
 
 
+    @SuppressLint("NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         saoyisao = view.findViewById(R.id.saoyisao)
+        if(status_forms.text.isNullOrEmpty()){
+            lifecycleScope.launch {
+                val myToken = sp.getString("TOKEN","weifangzhou")
+                val myForm = ChargeNetwork.getForms(myToken.toString())
+                val formList = myForm.forms.reversed()
+                if(formList.isNotEmpty()){
+                    status_forms.post { status_forms.text = "已完成" }
+                    start_time.post { start_time.text = formList[0].start }
+                    consume_time.post {
+                        val consumeSeconds = formList[0].consume.toLong()
+                        if(consumeSeconds>60){
+                            val consumeMinutes = consumeSeconds/60
+                            consume_time.text = "花费时长 : $consumeMinutes 分"
+                        }else{
+                            consume_time.text = "花费时长 : $consumeSeconds 秒"
+                        }
+                    }
+                }
+
+            }
+        }
+
+
+
+
         if(car_price.text.isNullOrEmpty()){
             car_status.text="未连接"
         }
@@ -107,7 +145,14 @@ class ChargeFragment : Fragment() {
             when(isChecked){
                 true -> {
                     if(car_status.text.toString() == "已连接"){
+                        val df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                        val time = LocalDateTime.now()
+                        //开启充电 状态变化
+                        start_time.text = df.format(time)
                         charge_status.text = "已开启充电"
+                        consume_time.text = "计时中"
+                        status_forms.text = "充电中"
+
                         TipDialog.show("开始充电", WaitDialog.TYPE.SUCCESS)
                         Glide.with(MyApplication.context).load(R.drawable.carcharge).into(car_charge)
                     }else{
@@ -119,6 +164,25 @@ class ChargeFragment : Fragment() {
                     }
                 }
                 false ->{
+                    if(charge_status.text  == "已开启充电"){
+                        val df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                        val time2 = LocalDateTime.now()
+                        val time1 = LocalDateTime.parse(start_time.text.toString(),df)
+                        val duration = Duration.between(time1,time2)
+                        val consume = duration.toMillis()
+                        val consumeSeconds = consume/1000
+                        if(consumeSeconds>60){
+                            val consumeMinutes = consumeSeconds/60
+                            consume_time.text = "花费时长 : $consumeMinutes 分"
+                        }else{
+                            consume_time.text = "花费时长 : $consumeSeconds 秒"
+                        }
+                        status_forms.text = "已完成"
+                        val token =sp.getString("TOKEN","weifangzhou")
+                        lifecycleScope.launch {
+                            ChargeNetwork.postForms(token.toString(),start_time.text.toString(),consumeSeconds.toString())
+                        }
+                    }
                     charge_status.text="未开启充电"
                     Glide.with(MyApplication.context).load(R.drawable.chargestop).into(car_charge)
                 }

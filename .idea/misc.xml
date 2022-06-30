@@ -3,7 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/drawable/ic_charge.xml" value="0.238" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/drawable/ic_find.xml" value="0.238" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/drawable/ic_label.xml" value="0.238" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/drawable/ic_load.xml" value="0.238" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/drawable/ic_mine.xml" value="0.238" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/drawable/ic_net_error.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/drawable/ic_scan.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/activity_forms.xml" value="0.23489583333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/activity_main.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/form_item.xml" value="0.16767983789260385" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/fragment_1.xml" value="0.22146739130434784" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/fragment_charge.xml" value="0.2033514492753623" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/fragment_mine.xml" value="0.12590579710144928" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/fragment_sign.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/layout/message.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MyCharge/app/src/main/res/menu/bootom_menu.xml" value="0.23489583333333333" />
       </map>
     </option>
   </component>

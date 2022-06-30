@@ -1,24 +1,19 @@
 package com.example.mycharge.main
 
 import android.annotation.SuppressLint
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.amap.api.maps.CameraUpdateFactory
 import com.amap.api.maps.MapView
-import com.amap.api.maps.TextureMapView
-import com.amap.api.maps.model.BitmapDescriptorFactory
 import com.amap.api.maps.model.LatLng
 import com.amap.api.maps.model.MarkerOptions
 import com.amap.api.maps.model.MyLocationStyle
 import com.amap.api.services.core.ServiceSettings
-import com.example.mycharge.MyApplication
 import com.example.mycharge.R
 import com.example.mycharge.network.ChargeNetwork
 import com.kongzue.dialogx.dialogs.FullScreenDialog
@@ -68,7 +63,7 @@ class HomeFragment : Fragment() {
         }
 
         map.moveCamera(CameraUpdateFactory.zoomTo(17F))
-
+        //初始化充电桩位置信息
         lifecycleScope.launch {
             val places = ChargeNetwork.serachCharges().places
             for( place in places){
@@ -81,7 +76,7 @@ class HomeFragment : Fragment() {
                     }
                 )
             }
-
+        //处理充电桩点击事件
             map.setOnMarkerClickListener {
                 for (place in places){
                     if (it.position.latitude.toString() == place.latitude &&it.position.longitude.toString()==place.longitude){

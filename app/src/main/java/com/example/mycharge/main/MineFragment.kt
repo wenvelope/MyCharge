@@ -16,6 +16,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.example.mycharge.FormsActivity
 import com.example.mycharge.HomeActivity
 import com.example.mycharge.MyApplication
 import com.example.mycharge.R
@@ -122,6 +123,11 @@ class MineFragment : Fragment() {
                     }
 
                 })
+        }
+
+        form_consume.setOnClickListener {
+            val intent = Intent(fathercontext,FormsActivity::class.java)
+            startActivity(intent)
         }
 
 

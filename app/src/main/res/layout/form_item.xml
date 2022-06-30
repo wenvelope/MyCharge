@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:layout_marginBottom="5dp">
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/start_item"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:layout_marginBottom="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/consume_item"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"/>
+
+            <View
+                android:layout_marginTop="2dp"
+                android:layout_width="330dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="#000000"
+                />
+            <TextView
+                android:id="@+id/status_item"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="已完成"
+                android:textSize="20sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

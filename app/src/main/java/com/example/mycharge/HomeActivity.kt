@@ -35,6 +35,7 @@ class HomeActivity : AppCompatActivity() {
         //绑定底部导航栏和fragment
         val myNaviControl:NavController = findNavController(R.id.navi_hostfragment)
         navi_bottom.setupWithNavController(myNaviControl)
+        //动态获取定位权限
         PermissionX.init(this)
             .permissions(android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.ACCESS_COARSE_LOCATION)
             .request{a,b,c->
@@ -51,6 +52,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        //处理扫码返回值
         when(requestCode){
             200 -> {
                 val hmsScan: HmsScan? = data?.getParcelableExtra(ScanUtil.RESULT) // 获取扫码结果 ScanUtil.RESULT

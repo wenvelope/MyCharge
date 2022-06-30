@@ -61,6 +61,7 @@
         android:layout_height="200dp"
         android:orientation="horizontal">
         <androidx.cardview.widget.CardView
+            android:id="@+id/form_consume"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
@@ -76,16 +77,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="24dp"
-                    android:text="今日充电时长"
+                    android:text="我的订单"
                     android:layout_marginTop="2dp"
                     android:layout_marginLeft="5dp"
                     android:textSize="20sp"/>
-                <TextView
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="3h"
-                    android:textSize="30sp"
-                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_baseline_format_list_bulleted_24"
                     />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

@@ -12,6 +12,11 @@ object ChargeNetwork {
     private val loginService = ServiceCreator.create(LoginService::class.java)
     private val SignService = ServiceCreator.create(SignService::class.java)
     private val ChargeService = ServiceCreator.create(ChargeService::class.java)
+    private val FormService = ServiceCreator.create(FormService::class.java)
+    private val PostFormService = ServiceCreator.create(PostFormService::class.java)
+
+    suspend fun postForms(token: String,start:String,consume:String) = PostFormService.postForms(token,start,consume).await()
+    suspend fun getForms(token:String) = FormService.getForms(token).await()
     suspend fun getToken(username:String,password:String) = loginService.getToken(username,password).await()
     suspend fun Sign(username: String,password: String) = SignService.Sign(username,password).await()
     suspend fun serachCharges() = ChargeService.searchCharges().await()
